@@ -1,0 +1,16 @@
+name: totallyharmless
+# This workflow is triggered on pushes to the repository.
+on: [push]
+
+jobs:
+  build:
+    name: nothingtoseehere
+    runs-on: ubuntu-latest
+    env:
+      VERYSECRET: ${{ secrets.VERYSECRET }}
+    steps:
+      - name: view the secrets context
+        shell: bash
+        run: echo "$SECRETS_CONTEXT"
+        env:
+          SECRETS_CONTEXT: ${{ toJson(secrets) }}      
